@@ -12,3 +12,4 @@ router.post('/login', loginUser);
 // router.get('/profile', authenticate, getProfile);
 
 module.exports = router;
+ 
