@@ -12,8 +12,6 @@ A simple task manager backend built with **Node.js**, **Express**, **Sequelize**
 
 ## 📸 Screenshots
 
-| Signup | login | Main Interface |
-|--------|------------|
 | ![Signup](./frontend/src/assets/signup.png) | ![Tasks](./frontend/src/assets/login.png) | ![MainInterface](./frontend/src/assets/mainInterface.png) |
 
 ---
