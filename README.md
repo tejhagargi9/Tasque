@@ -26,7 +26,7 @@ A simple task manager backend built with **Node.js**, **Express**, **Sequelize**
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Structure Backend
 
 ```
 .
