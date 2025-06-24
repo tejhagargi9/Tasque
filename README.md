@@ -1,6 +1,6 @@
 # 📝 Task Manager Web App
 
-A simple task manager backend built with **Node.js**, **Express**, **Sequelize**, and **PostgreSQL**. Users can register, log in, and manage tasks categorized by status (To Do, In Progress, Done).
+A full-stack task manager app built with **Node.js**, **Express**, **Sequelize**, **PostgreSQL**, and a modern **React.js** frontend. Users can register, log in, and manage tasks categorized by status: To Do, In Progress, and Done.
 
 ---
 
@@ -10,62 +10,69 @@ A simple task manager backend built with **Node.js**, **Express**, **Sequelize**
 
 ---
 
-## 📸 Screenshots
+## 📸 Snaps
 
-| ![Signup](./frontend/src/assets/signup.png) | ![Tasks](./frontend/src/assets/login.png) | ![MainInterface](./frontend/src/assets/mainInterface.png) |
+| ![Signup](./frontend/src/assets/signup.png) | ![Login](./frontend/src/assets/login.png) | ![Main](./frontend/src/assets/mainInterface.png) |
 
 ---
 
 ## 🚀 Features
 
-* 🔐 User Authentication (Signup & Login with JWT)
-* 🧾 Task CRUD (Create, Read, Update, Delete)
-* 📌 Tasks grouped by status
-* 🔒 Passwords hashed with bcrypt
-* 📦 Sequelize ORM with PostgreSQL (local)
+- 🔐 User Authentication (JWT)
+- 🧾 Task Management: Create, View, Update, Delete
+- 📌 Tasks grouped by status
+- 🔒 Secure password hashing using bcrypt
+- 🌐 Full-stack app using React + Express + PostgreSQL
+- 📦 Sequelize ORM
 
 ---
 
-## 📁 Project Structure Backend
+## 📁 Project Structure
 
 ```
+
 .
-├── config/
-│   └── db.js          # Sequelize DB connection
-├── controllers/
-│   └── userController.js
-│   └── taskController.js
-├── models/
-│   └── user.js
-│   └── task.js
-├── routes/
-│   └── userRoutes.js
-│   └── taskRoutes.js
-├── middleware/
-│   └── auth.js
-├── .env
-├── index.js
-├── package.json
-└── README.md
-```
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── .env
+│   ├── index.js
+│   └── package.json
+│
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── assets/
+│       ├── components/
+│       ├── pages/
+│       └── App.js
+│   └── package.json
+│
+├── README.md
+
+````
 
 ---
 
 ## 🧑‍💻 Prerequisites
 
-* Node.js installed
-* PostgreSQL installed and running locally
-* pgAdmin or any SQL GUI (optional)
+- Node.js installed
+- PostgreSQL installed and running locally
+- pgAdmin or any SQL client (optional)
 
 ---
 
 ## ⚙️ Environment Setup
 
-1. Create a PostgreSQL database locally:
+### 🔧 Backend Setup
 
-   * Example: `task_manager_db`
+1. Create a local PostgreSQL database:
+   - Example: `task_manager_db`
 
-2. Create a `.env` file in the root folder:
+2. Inside the `backend/` folder, create a `.env` file:
 
 ```env
 DB_NAME=task_manager_db
@@ -74,45 +81,54 @@ DB_PASS=your_postgres_admin_password
 DB_HOST=localhost
 PORT=3000
 JWT_SECRET=your_jwt_secret_key
-```
+````
 
-3. Install dependencies:
+3. Install dependencies and run the backend:
 
 ```bash
+cd backend
 npm install
+npm run dev  # or nodemon index.js
 ```
 
-4. Run the server:
+### 💻 Frontend Setup
+
+1. Go to the `frontend/` folder:
 
 ```bash
-nodemon
+cd frontend
+npm install
+npm run dev
 ```
+
+> Make sure the frontend is set to hit the correct API base URL (usually `http://localhost:3000`).
 
 ---
 
 ## 🧪 API Endpoints
 
-### Auth Routes
+### 🔐 Auth Routes
 
 * `POST /api/signup` – Register a new user
-* `POST /api/login` – Log in and receive JWT
+* `POST /api/login` – Login and receive JWT
 
-### Task Routes (Protected)
+### 📌 Task Routes (JWT Protected)
 
-* `GET /api/tasks` – Get all tasks for logged-in user
+* `GET /api/tasks` – Get all user tasks
 * `POST /api/tasks` – Create a task
-* `PATCH /api/tasks/:id` – Update task status/title
+* `PATCH /api/tasks/:id` – Update a task
 * `DELETE /api/tasks/:id` – Delete a task
 
-> 🔐 Add `Authorization: Bearer <token>` header for protected routes.
+> 🔐 Include `Authorization: Bearer <token>` in headers.
 
 ---
 
 ## 🧼 Notes
 
-* Uses Sequelize `sync()` to auto-create tables.
-* Passwords are securely hashed using bcrypt.
-* JWT used for protected routes and session validation.
+* Sequelize auto-generates DB tables using `sync()`
+* Passwords are hashed before storing in the database
+* JWTs are used for route protection and session handling
 
----
 
+This project is open-source and free to use.
+Happy Coding...
