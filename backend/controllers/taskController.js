@@ -1,4 +1,4 @@
-const Task = require('../models/Task'); // Assuming Task is a Sequelize model
+const Task = require('../models/task.js'); // Assuming Task is a Sequelize model
 // User model is no longer needed for getTasks and createTask
 // const User = require('../models/User'); 
 
@@ -6,7 +6,7 @@ const Task = require('../models/Task'); // Assuming Task is a Sequelize model
 const getTasks = async (req, res) => { // CHANGED: Renamed from getTasksByUser
   try {
     // REMOVED: The user_id check and where clause are gone.
-    console.log('Fetching all tasks'); // For debugging purposes
+    console.log('Fetching all taskss'); // For debugging purposes
     const tasks = await Task.findAll({ 
       order: [['createdAt', 'DESC']] 
     });
@@ -20,22 +20,21 @@ const getTasks = async (req, res) => { // CHANGED: Renamed from getTasksByUser
 // POST /api/tasks - Create a new task (no user association)
 const createTask = async (req, res) => {
   try {
-    const { title } = req.body; // CHANGED: Only 'title' is needed now
-    
-    // Add validation for title
-    if (!title) {
-        return res.status(400).json({ message: 'Title is required' });
+    console.log("Create task request received:", req.body);
+    const { title, userId } = req.body; // ✅ Get both from frontend
+
+    if (!title || !userId) {
+      return res.status(400).json({ message: 'Title and userId are required' });
     }
 
-    // REMOVED: The check for a user is gone.
-
-    // By default, a new task should have a 'todo' status
-    const newTask = await Task.create({ title, status: 'todo' }); // CHANGED: user_id is removed
+    const newTask = await Task.create({ title, status: 'todo', userId }); 
     res.status(201).json(newTask);
   } catch (error) {
+    console.error("ERROR CREATING TASK:", error); 
     res.status(500).json({ message: 'Error creating task', error: error.message });
   }
 };
+
 
 // PUT /api/tasks/:id - Update a task's title or status (NO CHANGE NEEDED)
 const updateTask = async (req, res) => {

@@ -1,22 +1,22 @@
+// taskRoutes.js (Corrected)
+
 const express = require('express');
 const router = express.Router();
 const {
-  getTasks, // <-- CHANGED
+  getTasks,
   createTask,
   updateTask,
   deleteTask
 } = require('../controllers/taskController');
+const authenticate = require('../middleware/auth');
 
-// GET /api/tasks (no query parameter needed)
-router.get('/', getTasks); // <-- CHANGED
+// This route still gets ALL tasks. We'll address this next.
+router.get('/', authenticate, getTasks); 
 
-// POST /api/tasks
-router.post('/', createTask);
+router.post('/', authenticate, createTask);
 
-// PUT /api/tasks/:id
-router.put('/:id', updateTask);
+router.put('/:id', authenticate, updateTask);
 
-// DELETE /api/tasks/:id
-router.delete('/:id', deleteTask);
+router.delete('/:id', authenticate, deleteTask);
 
 module.exports = router;
