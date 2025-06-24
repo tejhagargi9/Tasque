@@ -19,6 +19,10 @@ const taskRoutes = require('./routes/taskRoutes');
 app.use('/api', userRoutes);
 app.use('/api/tasks', taskRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Task Management API');
+});
+
 // Database setup
 sequelize.authenticate()
   .then(() => {
