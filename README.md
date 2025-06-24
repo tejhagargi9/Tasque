@@ -1,8 +1,4 @@
-Sure! Here's a complete and clean `README.md` for your **local Task Manager API project**, including `.env` instructions:
-
----
-
-# 📝 Task Manager API
+# 📝 Task Manager Web App
 
 A simple task manager backend built with **Node.js**, **Express**, **Sequelize**, and **PostgreSQL**. Users can register, log in, and manage tasks categorized by status (To Do, In Progress, Done).
 
@@ -18,7 +14,7 @@ A simple task manager backend built with **Node.js**, **Express**, **Sequelize**
 
 | Signup | login | Main Interface |
 |--------|------------|
-| ![Signup](./assets/signup.png) | ![Tasks](./assets/login.png) | ![MainInterface](./assets/mainInterface.png) |
+| ![Signup](./frontend/src/assets/signup.png) | ![Tasks](./frontend/src/assets/login.png) | ![MainInterface](./frontend/src/assets/mainInterface.png) |
 
 ---
 
@@ -39,18 +35,18 @@ A simple task manager backend built with **Node.js**, **Express**, **Sequelize**
 ├── config/
 │   └── db.js          # Sequelize DB connection
 ├── controllers/
-│   └── authController.js
+│   └── userController.js
 │   └── taskController.js
 ├── models/
 │   └── user.js
 │   └── task.js
 ├── routes/
-│   └── authRoutes.js
+│   └── userRoutes.js
 │   └── taskRoutes.js
 ├── middleware/
 │   └── auth.js
 ├── .env
-├── server.js
+├── index.js
 ├── package.json
 └── README.md
 ```
@@ -91,7 +87,7 @@ npm install
 4. Run the server:
 
 ```bash
-npm start
+nodemon
 ```
 
 ---
@@ -100,8 +96,8 @@ npm start
 
 ### Auth Routes
 
-* `POST /api/auth/signup` – Register a new user
-* `POST /api/auth/login` – Log in and receive JWT
+* `POST /api/signup` – Register a new user
+* `POST /api/login` – Log in and receive JWT
 
 ### Task Routes (Protected)
 
@@ -122,12 +118,3 @@ npm start
 
 ---
 
-## 💡 To Do
-
-* [ ] Add pagination and search
-* [ ] Add unit tests
-* [ ] Deploy backend (Railway/Render/Supabase functions)
-
----
-
-Let me know if you'd like the `.env.example` file or to create Swagger docs!
